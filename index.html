@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kak Raisa 🌸</title>
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+/* ⭐ Background Bintang */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.2; }
+  to { opacity: 1; }
+}
+
+/* Halaman awal */
+.start {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  background: #ff69b4;
+  color: white;
+  font-size: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* Nama besar */
+.bigName {
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  font-size: 60px;
+  font-weight: bold;
+  color: #ff69b4;
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+/* Pesan */
+.message {
+  position: absolute;
+  top: 32%;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 3s;
+  padding: 0 20px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* 🌸 Bunga */
+.flower {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  animation: grow 3s forwards;
+}
+
+.petal {
+  width: 20px;
+  height: 20px;
+  background: pink;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.stem {
+  width: 4px;
+  height: 60px;
+  background: green;
+  position: absolute;
+  left: 8px;
+  top: 20px;
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Musik -->
+<audio id="music">
+  <source src="alltoowell.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Start -->
+<div class="start" id="startPage">
+  <h1>Untuk Kak Raisa 🌸</h1>
+  <p>Ada sedikit kejutan kecil</p>
+  <button onclick="startSurprise()">Klik di sini</button>
+</div>
+
+<!-- Nama -->
+<div class="bigName" id="bigName">
+  RAISA 🌸
+</div>
+
+<!-- Pesan -->
+<div class="message" id="message">
+
+  Dari Najib 😊<br><br>
+
+  Semoga Kak Raisa diberi kelancaran<br>
+  dan ketenangan saat menghadapi UTBK nanti.<br><br>
+
+  Tetap semangat dan percaya<br>
+  pada usaha yang sudah dilakukan.<br><br>
+
+  Ini hanya kejutan kecil<br>
+  untuk menyemangati sebelum hari ujian.<br><br>
+
+  Semoga hasilnya terbaik ya, Kak 🌸
+
+</div>
+
+<script>
+
+/* ⭐ Buat bintang */
+for (let i = 0; i < 80; i++) {
+
+  let star = document.createElement("div");
+  star.className = "star";
+
+  star.style.left = Math.random() * window.innerWidth + "px";
+  star.style.top = Math.random() * window.innerHeight + "px";
+
+  star.style.animationDelay = Math.random() * 2 + "s";
+
+  document.body.appendChild(star);
+
+}
+
+/* 🌸 Buat bunga */
+function createFlower(x, y, delay) {
+
+  setTimeout(() => {
+
+    let flower = document.createElement("div");
+    flower.className = "flower";
+
+    flower.style.left = x + "px";
+    flower.style.bottom = y + "px";
+
+    let petal1 = document.createElement("div");
+    petal1.className = "petal";
+    petal1.style.top = "-20px";
+
+    let petal2 = document.createElement("div");
+    petal2.className = "petal";
+    petal2.style.left = "-20px";
+
+    let petal3 = document.createElement("div");
+    petal3.className = "petal";
+    petal3.style.left = "20px";
+
+    let petal4 = document.createElement("div");
+    petal4.className = "petal";
+    petal4.style.top = "20px";
+
+    let stem = document.createElement("div");
+    stem.className = "stem";
+
+    flower.appendChild(petal1);
+    flower.appendChild(petal2);
+    flower.appendChild(petal3);
+    flower.appendChild(petal4);
+    flower.appendChild(stem);
+
+    document.body.appendChild(flower);
+
+  }, delay);
+
+}
+
+/* Start */
+function startSurprise() {
+
+  document.getElementById("startPage").style.display = "none";
+
+  document.getElementById("music").play();
+
+  /* 30 bunga */
+  for (let i = 0; i < 30; i++) {
+
+    let x = Math.random() * window.innerWidth;
+    let y = Math.random() * 250;
+
+    createFlower(x, y, i * 400);
+
+  }
+
+  /* Nama muncul */
+  setTimeout(() => {
+
+    document.getElementById("bigName").style.opacity = "1";
+
+  }, 4000);
+
+  /* Pesan muncul */
+  setTimeout(() => {
+
+    document.getElementById("message").style.opacity = "1";
+
+  }, 6500);
+
+}
+
+</script>
+
+</body>
+</html>
